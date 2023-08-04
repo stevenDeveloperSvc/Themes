@@ -1,13 +1,12 @@
-import { Box, Flex, Icon, Text, Divider, Button, Show } from "@chakra-ui/react";
+import { Flex, Icon, Text, Divider, Button, Show } from "@chakra-ui/react";
 import { paddingX } from "../styles/styles";
 import { GrStatusGood } from "react-icons/gr";
 import {
     BiSolidChevronRightCircle,
     BiPhoneCall,
     BiTimeFive, BiSend,
-    BiLogoGmail
-    , BiLogoTwitter, BiLogoFacebook, BiLogoGooglePlus, BiLogoLinkedinSquare
 } from "react-icons/bi";
+import { headingIcons } from "../Data/index"
 
 
 
@@ -17,67 +16,82 @@ import {
 const Header = () => {
     return (
         <>
-            <Flex
-                width="100%"
-                height="80px"
-                bg="primary.100"
-                paddingX={paddingX}
-                alignItems="center"
-                justifyContent="space-between"
-            >
-
+            <Show above="md">
                 <Flex
+                    width="100%"
+                    height="80px"
+                    bg="primary.100"
+                    paddingX={paddingX}
                     alignItems="center"
+                    justifyContent="space-between"
                 >
 
-                    <Button
-
-                        height="50px"
-                        bg="font.100"
-                        color="#FF4C01"
-
-                        _hover={{
-
-                            backgroundColor: "transparent",
-                            border: "1px solid",
-                            borderColor: "#FFF",
-                            color: "white"
-                        }}
-                        rightIcon={<BiPhoneCall />}
+                    <Flex
+                        alignItems="center"
+                        justifyContent="space-between"
+                        width="480px"
                     >
-                        Call me
-                    </Button>
-                    <Box>
-                        <Icon color="font.100" as={BiTimeFive} />
-                        <Text
-                            display="inline"
-                            fontFamily="font"
-                            fontSize="sm"
-                            color="font.100" >Mon - Fri 09:00 - 17:00 </Text>
-                    </Box>
-                    <Box>
-                        <Icon  color="font.100" as={BiSend} />
-                        <Text
-                            display="inline"
-                            fontFamily="font"
-                            fontSize="sm"
-                            color="font.100" >Mon - Fri 09:00 - 17:00 </Text>
-                    </Box>
+
+                        <Button
+
+                            height="50px"
+                            bg="font.100"
+                            color="#FF4C01"
+                            border= "1px solid"
+                            _hover={{
+
+                                backgroundColor: "transparent",
+                                border: "1px solid",
+                                borderColor: "#FFF",
+                                color: "white"
+                            }}
+                            rightIcon={<BiPhoneCall />}
+                        >
+                            Call me
+                        </Button>
+                        <Flex
+                            alignItems="center"
+                            gap={2}
+                        >
+                            <Icon width="20px" height="20px" color="font.100" as={BiTimeFive} />
+                            <Text
+                                display="inline"
+                                fontFamily="font"
+                                fontSize="sm"
+                                color="font.100" >Mon - Fri 09:00 - 17:00 </Text>
+                        </Flex>
 
 
 
+                        <Flex
+                            alignItems="center"
+                            gap={2}
+                        >
+                            <Icon width="20px" height="20px" color="font.100" as={BiSend} />
+                            <Text
+                                display="inline"
+                                fontFamily="font"
+                                fontSize="sm"
+                                color="font.100" >Mon - Fri 09:00 - 17:00 </Text>
+                        </Flex>
+
+
+
+
+
+                    </Flex>
+
+                    <Flex
+                        width="150px"
+                        justifyContent="space-between"
+                    >
+                        {headingIcons.map(({ id, icon }) => (
+                            <Icon key={id} width="20px" height="20px" color="font.100" as={icon} />
+                        ))}
+                    </Flex>
                 </Flex>
 
-                <Box>
-                    <Icon as={BiLogoGmail} />
-                    <Icon as={BiLogoFacebook} />
-                    <Icon as={BiLogoGooglePlus} />
-                    <Icon as={BiLogoLinkedinSquare} />
-                    <Icon as={BiLogoTwitter} />
-                </Box>
-            </Flex>
 
-            <Show above="md">
 
 
 

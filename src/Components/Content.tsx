@@ -14,8 +14,6 @@ const Content = () => {
     <Flex flexDir={"column"}>
       <Flex
         position="relative"
-        width="100%"
-        height="100%"
         background={"white"}
         padding={{ base: "6", md: "60px" }}
         paddingX={paddingX}

@@ -4,6 +4,8 @@ import Navbar from './Components/Navbar'
 import Hero from './Components/Hero'
 import Content from './Components/Content'
 import Header from './Components/Header'
+import Projects from './Components/Projects'
+import Footer from './Components/Footer'
 
 function App() {
 
@@ -13,6 +15,8 @@ function App() {
     <Navbar/>
     <Hero/>
     <Content/>
+     <Projects/> 
+    <Footer/>
     </>
   )
 }

@@ -1,7 +1,8 @@
 
 export const paddingX = {
-    base: "6",
-    md: "70"
+    base: "10px",
+    md: "30px",
+    xl: "140px"
 
 }
 

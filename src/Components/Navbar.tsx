@@ -1,166 +1,84 @@
-import { Box, Button, Container, Text, Link, Hide, Show } from "@chakra-ui/react";
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
-} from "@chakra-ui/react";
+import { Box, Hide, Show, Flex, Text } from "@chakra-ui/react";
+
+import { useState } from "react";
+import { HamburgerMenu } from "./Hamburger/SmallMenu";
 import { paddingX } from "../styles/styles"
+import { NavBar } from "./Hamburger/BigMenu";
 
-import { FiChevronDown } from "react-icons/fi";
 
 
-const MenuItems = () => {
+const Navbar = () => {
+  const [openCollapse, setOpenCollapse] = useState({
+    Aboutus: false,
+    Pages: false,
+    Services: false,
+    Portfolio: false,
+    Blog: false,
+    Contactus: false
+  });
+
+
+  const ToggleMultilineMenuItems = (key: String) => {
+
+    setOpenCollapse((prevState) => ({
+      ...prevState,
+      [key]: !prevState[key]
+    }));
+
+  };
+
+
   return (
-    <>
-      <Menu isLazy >
-        <MenuButton
-          _hover={{ background: "transparent" }}
-          _active={{ background: "transparent", color: "#FF4C01" }}
-          margin="-4"
-          bg="transparent"
-          as={Button}
-          rightIcon={<FiChevronDown />}
-        >
-          About us
-        </MenuButton>
-        <MenuList>
-          <MenuItem>Download</MenuItem>
-          <MenuItem>Create a Copy</MenuItem>
-          <MenuItem>Mark as Draft</MenuItem>
-          <MenuItem>Delete</MenuItem>
-          <MenuItem>Attend a Workshop</MenuItem>
-        </MenuList>
-      </Menu>
+    <Box
+      position="sticky"
+      top="0"
+      display="flex"
+      alignItems="center"
+      justifyContent={{ base: "space-between", md: "start" }}
+      gap={5}
+      height="80px"
+      zIndex="sticky"
+      bgColor="white"
+      boxShadow="md"
+    //  boxShadow="1px 50px 80px rgba(0,0,0,.3)"
+      paddingX={paddingX}
+    >
 
-      <Menu >
-        <MenuButton
-          _hover={{ background: "transparent" }}
-          _active={{ background: "transparent", color: "#FF4C01" }}
-          bg="transparent"
-          as={Button}
-          rightIcon={<FiChevronDown />}
-        >
-          Pages
-        </MenuButton>
-        <MenuList>
-          <MenuItem>Download</MenuItem>
-          <MenuItem>Create a Copy</MenuItem>
-          <MenuItem>Mark as Draft</MenuItem>
-          <MenuItem>Delete</MenuItem>
-          <MenuItem>Attend a Workshop</MenuItem>
-        </MenuList>
-      </Menu>
 
-      <Menu>
-        <MenuButton
-          _hover={{ background: "transparent" }}
-          _active={{ background: "transparent", color: "#FF4C01" }}
-          bg="transparent"
-          as={Button}
-          rightIcon={<FiChevronDown />}
-        >
-          Services
-        </MenuButton>
-        <MenuList>
-          <MenuItem>Download</MenuItem>
-          <MenuItem>Create a Copy</MenuItem>
-          <MenuItem>Mark as Draft</MenuItem>
-          <MenuItem>Delete</MenuItem>
-          <MenuItem>Attend a Workshop</MenuItem>
-        </MenuList>
-      </Menu>
+      <Hide below="md">
 
-      <Menu>
-        <MenuButton
-          _hover={{ background: "transparent" }}
-          _active={{ background: "transparent", color: "#FF4C01" }}
-          bg="transparent"
-          as={Button}
-          rightIcon={<FiChevronDown />}
-        >
-          Portfolio
-        </MenuButton>
-        <MenuList>
-          <MenuItem>Download</MenuItem>
-          <MenuItem>Create a Copy</MenuItem>
-          <MenuItem>Mark as Draft</MenuItem>
-          <MenuItem>Delete</MenuItem>
-          <MenuItem>Attend a Workshop</MenuItem>
-        </MenuList>
-      </Menu>
-      <Menu>
-        <MenuButton
-          _hover={{ background: "transparent" }}
-          _active={{ background: "transparent", color: "#FF4C01" }}
-          bg="transparent"
-          as={Button}
-          rightIcon={<FiChevronDown />}
-        >
-          Blog
-        </MenuButton>
-        <MenuList>
-          <MenuItem>Download</MenuItem>
-          <MenuItem>Create a Copy</MenuItem>
-          <MenuItem>Mark as Draft</MenuItem>
-          <MenuItem>Delete</MenuItem>
-          <MenuItem>Attend a Workshop</MenuItem>
-        </MenuList>
-      </Menu>
 
-      <Menu>
-        <MenuButton
-          _hover={{ background: "transparent" }}
-          _active={{ background: "transparent", color: "#FF4C01" }}
-          bg="transparent"
-          as={Button}
-          rightIcon={<FiChevronDown />}
+        <NavBar />
+
+      </Hide>
+
+      <Show below="md" >
+        <Flex
+          width="100px"
+          position="relative"
+          height="100%"
+          alignItems='center'
+
         >
-          Contact us
-        </MenuButton>
-        <MenuList>
-          <MenuItem>Download</MenuItem>
-          <MenuItem>Create a Copy</MenuItem>
-          <MenuItem>Mark as Draft</MenuItem>
-          <MenuItem>Delete</MenuItem>
-          <MenuItem>Attend a Workshop</MenuItem>
-        </MenuList>
-      </Menu>
-    </>
-  );
+
+          <Text fontFamily="font" fontSize="3xl" fontWeight="bold">
+            <Text color="primary.100" as="span">
+              Dr.
+            </Text>
+            Clean
+          </Text>
+
+
+
+        </Flex>
+
+        <HamburgerMenu openCollapse={openCollapse} ToggleMultilineMenuItems={ToggleMultilineMenuItems} />
+      </Show>
+
+    </Box>
+
+  )
 };
-
-
-const Navbar = () => (
-  <Box
-    position="sticky"
-    top="0"
-    display="flex"
-    alignItems="center"
-    height="80px"
-    width="100%"
-    paddingX={paddingX}
-    zIndex="sticky"
-    bgColor="white"
-    boxShadow="1px 50px 80px rgba(0,0,0,.3)"
-  >
-
-
-    <Hide below="md">
-
-      <MenuItems />
-
-    </Hide>
-
-  </Box>
-
-
-
-);
 
 
 export default Navbar;
